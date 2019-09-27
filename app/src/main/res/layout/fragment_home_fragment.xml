@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.FragmentHome">
 
-    <ViewAnimator
+    <ViewAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".fragments.FragmentHome"
         android:id="@+id/VA"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -24,16 +21,12 @@
             />
         </FrameLayout>
 
-        <FrameLayout
+        <androidx.core.widget.ContentLoadingProgressBar
             android:id="@+id/hijo2"
+            style="@style/Widget.AppCompat.ProgressBar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/load"
-                />
-        </FrameLayout>
+            android:layout_height="match_parent"
+        />
 
         <FrameLayout
             android:id="@+id/hijo3"
@@ -57,9 +50,4 @@
                 />
         </FrameLayout>
 
-
     </ViewAnimator>
-
-
-
-</FrameLayout>

@@ -16,12 +16,18 @@ import android.widget.ViewAnimator
 
 import iteso.mx.tarea05.R
 import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 import kotlin.concurrent.thread
 
 class FragmentHome : Fragment() {
     companion object {
         fun newInstance() = FragmentHome()
+        const val SHOW_REFRESH = 0
+        const val SHOW_PROGRESSBAR = 1
+        const val SHOW_RECIPE = 2
+        const val SHOW_NORECIPE = 3
     }
+
     private lateinit var VF : ViewAnimator
 
     private lateinit var viewModel: FragmentHomeViewModel
@@ -34,11 +40,15 @@ class FragmentHome : Fragment() {
         VF = view.findViewById<ViewAnimator>(R.id.VA)
         val refresh = view.findViewById<Button>(R.id.fragment_refresh)
         refresh.setOnClickListener {
-            VF.showNext()
+            VF.displayedChild = SHOW_PROGRESSBAR
             doAsync {
                 Thread.sleep(5000)
-                VF.showNext()
+                uiThread {
+                    VF.displayedChild = SHOW_NORECIPE
+                }
             }
+
+
         }
 
         return view
