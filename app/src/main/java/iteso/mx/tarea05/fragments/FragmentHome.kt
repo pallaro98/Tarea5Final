@@ -15,11 +15,13 @@ import android.widget.TextView
 import android.widget.ViewAnimator
 
 import iteso.mx.tarea05.R
+import iteso.mx.tarea05.activities.HomeContract
+import iteso.mx.tarea05.activities.HomePresenter
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import kotlin.concurrent.thread
 
-class FragmentHome : Fragment() {
+class FragmentHome : Fragment(), HomeContract.View {
     companion object {
         fun newInstance() = FragmentHome()
         const val SHOW_REFRESH = 0
@@ -29,7 +31,7 @@ class FragmentHome : Fragment() {
     }
 
     private lateinit var VF : ViewAnimator
-
+    private lateinit var mPresenter: HomeContract.Presenter
     private lateinit var viewModel: FragmentHomeViewModel
 
     override fun onCreateView(
@@ -40,18 +42,25 @@ class FragmentHome : Fragment() {
         VF = view.findViewById<ViewAnimator>(R.id.VA)
         val refresh = view.findViewById<Button>(R.id.fragment_refresh)
         refresh.setOnClickListener {
-            VF.displayedChild = SHOW_PROGRESSBAR
-            doAsync {
-                Thread.sleep(5000)
-                uiThread {
-                    VF.displayedChild = SHOW_NORECIPE
-                }
-            }
-
+            mPresenter = HomePresenter(this)
+            mPresenter.fetchData()
 
         }
 
         return view
+    }
+
+    override fun showProgress() {
+        VF.displayedChild = SHOW_PROGRESSBAR
+    }
+
+    override fun showInfo() {
+        VF.displayedChild = SHOW_RECIPE
+    }
+
+    override fun showNoInfo() {
+        VF.displayedChild = SHOW_NORECIPE
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

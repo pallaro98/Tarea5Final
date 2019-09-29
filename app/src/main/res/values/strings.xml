@@ -3,4 +3,14 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ingredientes_maruchan">
+        <b>Ingredientes</b> \n\n
+        1 paq Maruchan Ramen sabor pollo picante \n\n
+        2 tzas Agua \n\n
+        ½ pza Cebolla, fileteada \n\n
+        1 pza Pimiento verde, en bastones \n\n
+        3 pzas Chuleta ahumada, sin hueso y en cubos \n\n
+        1 tza Pechuga de pollo, en cubos medianos \n\n
+        ½ tza Queso tipo manchego, rallado  c/s Aceite \n\n
+    </string>
 </resources>

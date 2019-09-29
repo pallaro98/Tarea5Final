@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-    <ViewAnimator xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        tools:context=".fragments.FragmentHome"
-        android:id="@+id/VA"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<ViewAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.FragmentHome"
+    android:id="@+id/VA"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
         <FrameLayout
             android:id="@+id/hijo1"
@@ -28,25 +29,59 @@
             android:layout_height="match_parent"
         />
 
-        <FrameLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/hijo3"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/activity_main_g_40_v"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".4" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/activity_main_g_5_h"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent=".05" />
+
             <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/fotoMaruchan"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:src="@drawable/maruchan"
+                app:layout_constraintTop_toTopOf="@id/activity_main_g_5_h"
+                app:layout_constraintStart_toStartOf="@id/activity_main_g_40_v"
                 />
-        </FrameLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="100dp"
+                android:text="@string/ingredientes_maruchan"
+                />
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Agregar a favoritos"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <FrameLayout
+
             android:id="@+id/hijo4"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/user"
+            android:layout_height="match_parent"
+            android:background="@drawable/norecipes">
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="No Recipes"
+                android:textSize="50pt"
                 />
         </FrameLayout>
 
